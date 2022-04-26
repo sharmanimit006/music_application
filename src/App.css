@@ -18,3 +18,107 @@
 .icon_class>.MuiSvgIcon-root{
   color:#027060;
 }
+.tabble,tr{
+  
+  border: 1px solid;
+  width: 100%;
+  background-image: -moz-radial-gradient();
+  
+  
+
+}
+.tabble,td{
+  background-color: aqua;
+}
+.tabble,th{
+  background-color: blueviolet;
+
+}
+.inner-content{
+  text-align: center;
+}
+
+.contact-heading{
+  background-image: "music_app/music_application/public/contact-heading.jpg";
+  background-color: black;
+}
+.page-heading{
+  background-size: cover;
+  padding:210px 0px 130px 0px;
+  background-repeat: repeat;
+  background-position: center;
+  text-align: center;
+}
+.page-heading .text-content h4{
+  color:#f33f3f;
+  font-size:42px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom: 15px;
+
+}
+.find-us{
+  margin-top: 100px;
+}
+.page-heading .text-content h2{
+  color:white;
+ font-size:42px;
+ text-transform:lowercase;
+ letter-spacing: 5px;
+
+}
+.find-us .left-content{
+  margin-left: 30px;
+}
+.left-content p{
+  border-bottom: 1px red solid;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+.left-content h4{
+  color:#1a6692;
+  font-size:17px;
+  margin-bottom: 20px;
+}
+.section-heading{
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eee
+}
+.contact-form .filled-button{
+  background-color: red;
+  font-size: 20px;
+  font-weight: 400px;
+  outline: none;
+  cursor:pointer;
+  color: aqua;
+  text-transform: uppercase;
+  padding:10px 20px;
+  border-radius:5px;
+}
+.contact-form textarea{
+  height:120px;
+}
+.box{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  float:right;
+}
+.hidden{
+  visibility: hidden;
+}
+.amit{
+  
+  font-size: 20px;
+  font-weight: 400px;
+  outline: none;
+  cursor:pointer;
+  color: aqua;
+  text-transform: uppercase;
+  padding:5px 5px 5px 5px;
+  border-radius:5px;
+  width:100px;
+}
+
+  
+
+

@@ -1,14 +1,19 @@
 //import { Checkbox } from '@material-ui/core'
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {TextField,Button,Divider} from '@material-ui/core';
-
+import {TextField,Button,Divider} from '@material-ui/core'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 //import PersonIcon from '@material-ui/icons/person';
+import Music_list from './Music_list';
+//import {useNavigate} from "react-router-dom";
+//import Music_list from './Music_list';
+
+
  function Login() {
+     
     
 
 
@@ -45,7 +50,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
         />
 
     <div>
-        <Button variant="contained" color="primary" fullWidth >Log in</Button>
+       <Link to="/musiclist"> <Button variant="contained" color="primary" onClick={Music_list()}  fullWidth >Log in</Button></Link>
         </div>
 
     </div>
