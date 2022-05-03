@@ -7,14 +7,33 @@ import { Link } from "react-router-dom";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { IconButton } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+
+//import NightlightIcon from "@material-ui/icons/NightlightIcon"
+//import LightModeIcon  from "@material-ui/icons/LightModeIcon"
+
 
 const ShowProduct = () => {
+  const languages = [
+    {
+      code: "hi",
+      name: "हिन्दी",
+    },
+    {
+      code: "en",
+      name: "English",
+    },
+  ];
+  const { t } = useTranslation();
   const [product, setProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [darkmode, setDarkmode] = useState({
     color:"black",
     backgroundColor:"white"
   })
+
+  
   //const [fileList, setFileList] = useState([]);
   //const fileTypes = ["mp3"];
   const navigate = useNavigate();
@@ -67,6 +86,7 @@ const lightModeTheme = () => {
     })
   }
 }
+
   return (
     <>
     <Navbar bg="dark" variant="dark">
@@ -81,6 +101,21 @@ const lightModeTheme = () => {
     </Nav>
     </Container>
   </Navbar>
+  <div style={{ display: "flex", marginTop:10 }}>
+        {languages.map(({ code, name }) => (
+          <p
+            onClick={() => i18next.changeLanguage(code)}
+            style={{
+              padding: "1rem",
+              cursor: "pointer",
+            }}
+          >
+            {name}
+          </p>
+        ))}
+      </div>
+
+  <div className="wholetable"  style={darkmode}>
   <div className="darkMode">
     <IconButton  className="icons" onClick={darkModeTheme}>
     <NightlightIcon/>
@@ -89,6 +124,7 @@ const lightModeTheme = () => {
     <LightModeIcon style={{color:"white"}}onClick={lightModeTheme}/>
     </IconButton>
     </div>
+  
     <div className="container">
       
       <input 
@@ -101,20 +137,20 @@ const lightModeTheme = () => {
       {/* <NavLink to="/add" className="btn btn-primary"> Add Product</NavLink> */}
       <div className="mt-2 mb-2">
         <button className="btn btn-primary" onClick={addPRoute}>
-          Add Song
+        {t("Add")}
         </button>
       </div>
-      <table className="table">
-        <thead>
-          <tr className="">
-            <th scope="col">S.No</th>
-            <th scope="col">Song Name</th>
-            <th scope="col"> Song Duration</th>
+      <table className="table" >
+        <thead style={darkmode}>
+          <tr className="" >
+            <th scope="col">{t("Serial")}</th>
+            <th scope="col">{t("Song Name")}</th>
+            <th scope="col"> {t("Duration")}</th>
             <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style={darkmode}>
           {product
             .filter((item) => {
               if (searchTerm == "") {
@@ -136,7 +172,7 @@ const lightModeTheme = () => {
                   <td className="d-flex justify-content-between ">
                     
                     <NavLink>
-                      <button className="btn btn-success" >Upload</button>
+                      <button className="btn btn-success" >{t("Upload")}</button>
                       
                 
                 
@@ -155,7 +191,7 @@ const lightModeTheme = () => {
                     <button
                       className="btn btn-danger"
                       onClick={() => deleteHandler(item.ProductID)}>
-                      Delete
+                      {t("Delete")}
                     </button>
                   </td>
                 </tr>
@@ -180,6 +216,7 @@ const lightModeTheme = () => {
 
 
     </footer>
+    </div>
     </>
   );
 };

@@ -1,16 +1,43 @@
 import MaterialTable from 'material-table';
-import React from 'react'
+import React,{useState} from 'react'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Button } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import { Navbar, Nav} from 'react-bootstrap';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { IconButton } from "@material-ui/core";
+import NightlightIcon from '@mui/icons-material/Nightlight';
 
 
 
 //import React from 'react'
 
 export default function Playlist() {
+  const [darkmode, setDarkmode] = useState({
+    color:"black",
+    backgroundColor:"white"
+  })
+  
+const darkModeTheme = () => {
+  if(darkmode.color == 'black'){
+    setDarkmode({
+      color:"white",
+      backgroundColor:"black",
+    })
+  }
+}
+const lightModeTheme = () => {
+  if(darkmode.color == 'white'){
+    setDarkmode({
+      color:"black",
+      backgroundColor:"white"
+    })
+  }
+}
+
+
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -25,12 +52,23 @@ export default function Playlist() {
     </Nav>
     </Container>
   </Navbar>
+  <div className="darkMode">
+    <IconButton  className="icons" onClick={darkModeTheme}>
+    <NightlightIcon/>
+    </IconButton>
+    <IconButton  className="icons">
+    <LightModeIcon style={{color:"white"}}onClick={lightModeTheme}/>
+    </IconButton>
+    </div>
+    <div className='mtable'style={darkmode}>
      <MaterialTable
+     style={darkmode}
       title="MUSIC LIST"
       columns={[
         { title: 'Song Name', field: 'name' },
         { title: 'Singer Name', field: 'singername' },
         { title: 'Duration', field: 'duration', type: 'numeric' },
+        {title:'',field:'delete',type:'string'},
         {/**title:'Delete',field:'delete',type:'string'**/},
         
         
@@ -40,14 +78,14 @@ export default function Playlist() {
         
       ]}
       data={[
-        { name: 'Army', singername: 'ellie goulding', duration: 1,delete:"nimit" },
-        { name: 'Blank Space', singername: 'taylor swift', duration: 2, },
-        {name: 'closure', singername: 'rock',duration: 3, },
-        {name: 'burn', singername: 'ellie',duration: 4, },
-        {name: 'Dark horse', singername: 'ketty perry',duration: 2},
-        {name: 'waka waka', singername: 'shakira',duration: 3},
-        {name: 'take me home', singername: 'jess glynn',duration: 2},
-        {name: 'she wolf', singername: 'shakira',duration: 1},
+        { name: 'Army', singername: 'ellie goulding', duration: 1,delete:"nimit",delete: <DeleteIcon/> },
+        { name: 'Blank Space', singername: 'taylor swift', duration: 2,delete: <DeleteIcon/> },
+        {name: 'closure', singername: 'rock',duration: 3,delete: <DeleteIcon/> },
+        {name: 'burn', singername: 'ellie',duration: 4,delete: <DeleteIcon/> },
+        {name: 'Dark horse', singername: 'ketty perry',duration: 2,delete: <DeleteIcon/>},
+        {name: 'waka waka', singername: 'shakira',duration: 3,delete: <DeleteIcon/>},
+        {name: 'take me home', singername: 'jess glynn',duration: 2,delete: <DeleteIcon/>},
+        {name: 'she wolf', singername: 'shakira',duration: 1,delete: <DeleteIcon/>},
         
       ]}        
       options={{
@@ -56,6 +94,7 @@ export default function Playlist() {
       
 
     />
+    </div>
     <DeleteIcon/>
     <Container>
     <Button color="primary" variant="contained" onClick={()=>console.log("you clicked me")}>
